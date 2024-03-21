@@ -37,6 +37,11 @@ def hello_world():
     myvar = 'INFR3810'
     return render_template('index.html', msg=myvar)
 
+@app.route('/rollsroyce')
+def hello_world():
+    myvar = 'INFR3810'
+    return render_template('rollsroyce.html', msg=myvar)
+
 @app.route('/list')
 def list():
     db = Database()
