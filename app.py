@@ -38,7 +38,7 @@ def hello_world():
     return render_template('index.html', msg=myvar)
 
 @app.route('/rollsroyce')
-def hello_world():
+def new_page():
     myvar = 'INFR3810'
     return render_template('rollsroyce.html', msg=myvar)
 
