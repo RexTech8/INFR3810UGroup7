@@ -1,0 +1,28 @@
+<html>
+    <body>
+        <p>Query Results</p>
+
+        <table id='students' style="width:50%">
+
+            {% if result %}
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Grade</th>
+            </tr>
+
+            {% for row in result %}
+            <tr>
+                <td> {{ row.id }} </td>
+                <td> {{ row.name }} </td>
+                <td> {{ row.grade }} </td>
+            </tr>
+            {% endfor %}
+            {% endif %}
+
+
+
+        </table>
+
+    </body>
+</html>
