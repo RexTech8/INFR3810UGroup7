@@ -3,7 +3,7 @@
 from flask import Flask, render_template, request
 import pymysql
 
-app = Flask(__name__, template_folder="views")
+app = Flask(__name__)
 
 ##### DATABASE #####
 
@@ -37,7 +37,7 @@ def hello_world():
     myvar = 'INFR3810'
     return render_template('index.html', msg=myvar)
 
-@app.route('/rollsroyce')
+@app.route('/rollsroyce/')
 def new_page():
     return render_template('rollsroyce.html')
 
