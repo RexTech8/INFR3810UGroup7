@@ -1,11 +1,69 @@
+<!DOCTYPE html>
 <html>
-    <body>
-        <h1>This is my index.html</h1>
+<head>
+<title>G7 Rentals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<style>
+body {font-family: "Raleway", Arial, sans-serif}
+.w3-row img {margin-bottom: -8px}
+/* Define initial image size */
+.shrink-on-hover2 img {
+    width: 200px; /* Set your desired initial width */
+    transition: width 0.3s ease; /* Add transition effect */
+}
 
-        {% if msg %}
-            <h1>{{ msg }}</h1>
-        {% else %}
-        {% endif %}
+/* Define hover effect */
+.shrink-on-hover2 img:hover {
+    width: 150px; /* Set your desired width on hover */
+}
+</style>
+</head>
+<body>
 
-    </body>
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-content" style="max-width:1500px">
+
+  <!-- Header -->
+  <header class="w3-container w3-xlarge w3-padding-24">
+    <a href="#" class="w3-left w3-button w3-white">G7 Rentals</a>
+    <a href="#about" class="w3-right w3-button w3-white">About</a>
+  </header>
+
+  <!-- Photo Grid -->
+
+  <div class="w3-row">
+    <div class="w3-half">
+        <div class="shrink-on-hover2">
+      <img src="https://ev-database.org/img/auto/Rolls-Royce-Spectre/Rolls-Royce-Spectre-01@2x.jpg" style="width:100%">
+      <img src="https://d2ox13tjqpxop5.cloudfront.net/BUGATTI-2023/Bugatti-Models/W16-Mistral/Gallery/image-16.jpg" style="width:100%">
+        </div>
+    </div>
+
+    <div class="w3-half">
+        <div class="shrink-on-hover2">
+        <a href="#">
+            <img src="https://cdn-ds.com/blogs-media/sites/214/2022/12/20154305/2023-Lexus-LX-A_o.jpg" style="width:100%">
+        </a>
+        <img src="https://www.carscoops.com/wp-content/uploads/2024/01/2023-Infiniti-QX-Monograph-Concept-12.jpg" style="width:100%">
+        </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer / About Section -->
+<footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+  <h2>About</h2>
+  <img src="https://logodix.com/logo/1911082.png" class="w3-image w3-padding-32" width="300" height="300">
+    <h6>Welcome to Oshawa's premier luxury car rental destination, where elegance meets performance. At our esteemed rental service, we redefine the driving experience with a meticulously curated fleet of top-tier vehicles, ranging from sleek sports cars to opulent sedans, ensuring every journey is imbued with style and sophistication. Our commitment to unparalleled customer service ensures that each client receives personalized attention and seamless arrangements tailored to their preferences. Whether you're exploring the scenic routes of Ontario or making a statement at a special event, trust us to elevate your driving experience to extraordinary heights. Unlock the door to luxury with us and let every mile be a testament to refinement and prestige.</h6>
+    <p class="w3-large w3-text-pink"><a href="#top" target="_blank" class="w3-hover-text-green">Book a Ride today!</a></p>
+  </form>
+  <br>
+  <p>Powered by <a href="https://render.com/" target="_blank" class="w3-hover-text-green">Render</a></p>
+</footer>
+ 
+</body>
 </html>
