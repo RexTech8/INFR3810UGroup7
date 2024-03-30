@@ -38,19 +38,19 @@ def hello_world():
     return render_template('index.html', msg=myvar)
 
 @app.route('/rollsroyce/')
-def new_page():
+def new_page1():
     return render_template('rollsroyce.html')
 
 @app.route('/bugatti/')
-def new_page():
+def new_page2():
     return render_template('bugatti.html')
 
 @app.route('/infiniti/')
-def new_page():
+def new_page3():
     return render_template('infiniti.html')
 
 @app.route('/lexus/')
-def new_page():
+def new_page4():
     return render_template('lexus.html')
 
 @app.route('/list')
