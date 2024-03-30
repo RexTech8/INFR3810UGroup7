@@ -41,6 +41,18 @@ def hello_world():
 def new_page():
     return render_template('rollsroyce.html')
 
+@app.route('/bugatti/')
+def new_page():
+    return render_template('bugatti.html')
+
+@app.route('/infiniti/')
+def new_page():
+    return render_template('infiniti.html')
+
+@app.route('/lexus/')
+def new_page():
+    return render_template('lexus.html')
+
 @app.route('/list')
 def list():
     db = Database()
