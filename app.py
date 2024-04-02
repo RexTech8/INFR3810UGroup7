@@ -71,9 +71,12 @@ def insert():
     msg = ""
     if request.method == "POST":
         data = request.form
-        id = data['id']
-        name = data['name']
-        grade = data['grade']
+        id = data['CusomterID']
+        name = data['Name']
+        grade = data['Address']
+        email = data['Email']
+        phonenumber = data['PhoneNumber']
+        driverslicensenumber = data['DriversLicenseNumber']
 
         db = Database()
         msg = db.insert(id, name, grade)
