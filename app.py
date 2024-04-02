@@ -17,14 +17,15 @@ class Database:
         self.con = pymysql.connect(host=host, user=user, password = pwd, db=db, cursorclass=pymysql.cursors.DictCursor)
         self.cur = self.con.cursor()
 
+    #SQL
     def select(self):
-        self.cur.execute("SELECT * FROM Student")
+        self.cur.execute("SELECT * FROM Customer")
         result = self.cur.fetchall()
         self.con.close()
         return result
 
     def insert(self, id, name, grade):
-        self.cur.execute("INSERT INTO Student (id, name, grade) VALUES (%s, %s, %s)", (id, name,grade))
+        self.cur.execute("INSERT INTO Customer ((CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber) VALUES(%s, %s, %s, %s, %s, $s)", (id, name, grade, address, email, phonenumber, driverslicensenumber))
         self.con.commit()
         self.con.close()
 
@@ -70,6 +71,7 @@ def insert():
 
         db = Database()
         msg = db.insert(id, name, grade)
+
 
 
     return render_template('form.html', msg=msg)
