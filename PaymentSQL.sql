@@ -1,0 +1,1 @@
+SELECT * FROM Payment p JOIN Reservation r ON p.PaymentID = r.PaymentID

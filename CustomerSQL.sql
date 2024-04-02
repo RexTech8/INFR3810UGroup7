@@ -1,0 +1,1 @@
+SELECT * FROM Customer c JOIN Reservation r ON c.CustomerID = r.ReservationID
