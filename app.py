@@ -31,6 +31,12 @@ class Database:
 
         return "OK"
 
+    def update(self, Name, Address, Email, PhoneNumber, DriversLicenseNumber):
+        self.cur.execute ("UPDATE Customer SET Name=%s, Address=%s, Email=%s, PhoneNumber=%s, DriversLicenseNumber=%s")
+        self.con.commit()
+        self.con.close()
+
+        return "Updated"
 
 
 @app.route('/')
