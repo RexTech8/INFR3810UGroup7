@@ -25,7 +25,7 @@ class Database:
         return result
 
     def insert(self, id, name, grade):
-        self.cur.execute("INSERT INTO Customer ((CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber) VALUES(%s, %s, %s, %s, %s, $s)", (id, name, grade, address, email, phonenumber, driverslicensenumber))
+        self.cur.execute("INSERT INTO Customer ((CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber) VALUES(%s, %s, %s, %s, %s, $s)"), (id, name, grade, address, email, phonenumber, driverslicensenumber))
         self.con.commit()
         self.con.close()
 
@@ -37,6 +37,13 @@ class Database:
         self.con.close()
 
         return "Updated"
+
+    def delete_entity(self, id):
+        self.cur.execute("DELETE FROM Customer WHERE CusotmerID=?, Name=?, Address=?, Email=?, PhoneNumber=?, DriversLicenseNumber=?"), (CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber))
+        self.con.commit()
+        self.con.close()
+        
+        return "Deleted"
 
 
 @app.route('/')
