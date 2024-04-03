@@ -29,14 +29,13 @@ def submit_form():
     # Get form data
     name = request.form['name']
     email = request.form['email']
-    message = request.form['message']
 
     # Insert data into RDS
     try:
         connection = get_db_connection()
         with connection.cursor() as cursor:
-            sql = "INSERT INTO messages (name, email, message) VALUES (%s, %s, %s)"
-            cursor.execute(sql, (name, email, message))
+            sql = "INSERT INTO messages (name, email, message) VALUES (%s, %s)"
+            cursor.execute(sql, (name, email))
         connection.commit()
         connection.close()
         return "Form submitted successfully!"
@@ -60,22 +59,3 @@ def list():
     db = Database()
     result = db.select()
     return render_template('results.html', result=result)
-
-@app.route('/insert', methods=['GET', 'POST'])
-def insert():
-    msg = ""
-    if request.method == "POST":
-        data = request.form
-        id = data['CusomterID']
-        name = data['Name']
-        grade = data['Address']
-        email = data['Email']
-        phonenumber = data['PhoneNumber']
-        driverslicensenumber = data['DriversLicenseNumber']
-
-        db = Database()
-        msg = db.insert(id, name, grade)
-
-
-
-    return render_template('form.html', msg=msg)
