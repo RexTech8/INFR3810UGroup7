@@ -1,11 +1,64 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Driver's License Number Search</title>
+<title>G7 Rentals</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet" type="text/css">
+<style>
+body {font-family: "Raleway", Arial, sans-serif}
+.w3-row img {margin-bottom: -8px}
+ /* Center the form */
+.form-container {
+            width: 50%; /* Adjust the width as needed */
+            margin: auto;
+            text-align: center;
+        }
+
+        /* Style for form labels */
+        label {
+            display: block;
+            margin-bottom: 5px;
+            text-align: left;
+        }
+
+        /* Style for form inputs */
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="date"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #303030;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #ff0000;
+        }
+</style>
 </head>
 <body>
+
+
+<!-- !PAGE CONTENT! -->
+
+<body>
+    <div class="form-container">
     <h1>Search Reservation Details</h1>
     <form action="/search" method="POST">
         <label for="license_number">Enter the Reservation Driver's License Number:</label>
@@ -19,5 +72,30 @@
         <input type="text" id="reservation_id" name="reservation_id" required>
         <button type="submit">Delete</button>
     </form>
+</div>
+</body>
+
+
+
+
+  <!-- Header -->
+  <header class="w3-container w3-xlarge w3-padding-24">
+    <a href="/" class="w3-left w3-button w3-white">G7 Rentals</a>
+    <a href="#about" class="w3-right w3-button w3-white">About</a>
+  </header>
+
+
+
+<!-- Footer / About Section -->
+<footer class="w3-light-grey w3-padding-64 w3-center" id="about">
+  <h2>About</h2>
+  <img src="https://logodix.com/logo/1911082.png" class="w3-image w3-padding-32" width="300" height="300">
+    <h6>Welcome to Oshawa's premier luxury car rental destination, where elegance meets performance. At our esteemed rental service, we redefine the driving experience with a meticulously curated fleet of top-tier vehicles, ranging from sleek sports cars to opulent sedans, ensuring every journey is imbued with style and sophistication. Our commitment to unparalleled customer service ensures that each client receives personalized attention and seamless arrangements tailored to their preferences. Whether you're exploring the scenic routes of Ontario or making a statement at a special event, trust us to elevate your driving experience to extraordinary heights. Unlock the door to luxury with us and let every mile be a testament to refinement and prestige.</h6>
+    <p class="w3-large w3-text-pink"><a href="#top" target="_blank" class="w3-hover-text-green">Book a Ride today!</a></p>
+  </form>
+  <br>
+  <p>Powered by <a href="https://render.com/" target="_blank" class="w3-hover-text-green">Render</a></p>
+</footer>
+ 
 </body>
 </html>
