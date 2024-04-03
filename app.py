@@ -9,10 +9,10 @@ app = Flask(__name__)
 
 class Database:
     def __init__(self):
-        host = "YOURUSERNAME.mysql.pythonanywhere-services.com"
-        user = "YOURUSERNAME"
-        pwd = "YOURMYSQLPASSWORD"
-        db = "YOURDATABASENAME"
+        host = "group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com"
+        user = "admin"
+        pwd = "GHpT>O0jemlG3i*[>9by*|E?KiEK"
+        db = "group7database"
 
         self.con = pymysql.connect(host=host, user=user, password = pwd, db=db, cursorclass=pymysql.cursors.DictCursor)
         self.cur = self.con.cursor()
