@@ -129,7 +129,7 @@ def new_page4():
 def newpage5():
     return render_template('form.html')
 
-@app.route('/result/')
+@app.route('/results/')
 def newpage5():
     return render_template('results.html')
 
