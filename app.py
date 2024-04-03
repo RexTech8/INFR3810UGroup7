@@ -27,6 +27,7 @@ def new_page1():
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     # Get form data
+    CustomerID = request.form['CustomerID']
     name = request.form['name']
     email = request.form['email']
     PickUpLocation = request.form['PickUpLocation']
@@ -36,8 +37,8 @@ def submit_form():
         connection = get_db_connection()
 
         with connection.cursor() as cursor:
-            sql_customer = "INSERT INTO Customer (name, email) VALUES (%s, %s)"
-            cursor.execute(sql_customer, (name, email))
+            sql_customer = "INSERT INTO Customer (CustomerID, name, email) VALUES (%s, %s, %s)"
+            cursor.execute(sql_customer, (CustomerID, name, email))
 
         with connection.cursor() as cursor:
             sql_loc = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
