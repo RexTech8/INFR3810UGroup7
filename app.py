@@ -85,7 +85,31 @@ def submit_form():
         return f"An error occurred: {str(e)}"
 
 
+@app.route('/search', methods=['POST'])
+def search():
+    # Connect to the database
+    connection = pymysql.connect(host="group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com",
+                                 user="admin",
+                                 password="GHpT>O0jemlG3i*[>9by*|E?KiEK",
+                                 database="CarRentalService",
+                                 cursorclass=pymysql.cursors.DictCursor)
 
+    try:
+        with connection.cursor() as cursor:
+            # Retrieve the Driver's License Number from the form
+            ReservationID = request.form['license_number']
+
+            # Execute the SQL query to fetch data based on the Driver's License Number
+            sql = "SELECT * FROM Reservation WHERE DriversLicenseNumber = %s"
+            cursor.execute(sql, (ReservationID))
+            results = cursor.fetchall()
+
+    finally:
+        # Close the database connection
+        connection.close()
+
+    # Render the template with the search results
+    return render_template('index.html', results=results)
 
 
 

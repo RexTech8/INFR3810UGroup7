@@ -1,28 +1,25 @@
-<html>
-    <body>
-        <p>Query Results</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Driver's License Number Search</title>
+</head>
+<body>
+    <h1>Driver's License Number Search</h1>
+    <form action="/search" method="POST">
+        <label for="license_number">Enter Driver's License Number:</label>
+        <input type="text" id="license_number" name="license_number" required>
+        <button type="submit">Search</button>
+    </form>
 
-        <table id='students' style="width:50%">
-
-            {% if result %}
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Grade</th>
-            </tr>
-
-            {% for row in result %}
-            <tr>
-                <td> {{ row.id }} </td>
-                <td> {{ row.name }} </td>
-                <td> {{ row.grade }} </td>
-            </tr>
-            {% endfor %}
-            {% endif %}
-
-
-
-        </table>
-
-    </body>
+    {% if results %}
+    <h2>Search Results:</h2>
+    <ul>
+        {% for row in results %}
+        <li>{{ row }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+</body>
 </html>
