@@ -100,7 +100,7 @@ def search():
             ReservationID = request.form['license_number']
 
             # Execute the SQL query to fetch data based on the Driver's License Number
-            sql = "SELECT * FROM Reservation WHERE ReservationID = %s"
+            sql = "SELECT * FROM Reservation JOIN Vehicle ON Reservation.ReservationID = Vehicle.VehicleID WHERE Reservation.ReservationID = %s;"
             cursor.execute(sql, (ReservationID))
             results = cursor.fetchall()
 
@@ -109,7 +109,7 @@ def search():
         connection.close()
 
     # Render the template with the search results
-    return render_template('index.html', results=results)
+    return render_template('results2.html', results=results)
 
 
 
@@ -133,3 +133,6 @@ def newpage5():
 def newpage6():
     return render_template('results.html')
 
+@app.route('/results2/')
+def newpage7()):
+    return render_template('results2.html')
