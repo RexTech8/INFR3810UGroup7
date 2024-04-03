@@ -27,28 +27,67 @@ def new_page1():
 @app.route('/submit_form', methods=['POST'])
 def submit_form():
     # Get form data
-    CustomerID = request.form['CustomerID']
+    CustomerID = request.form['license']
     name = request.form['name']
+    address = request.form ['address']
     email = request.form['email']
-    PickUpLocation = request.form['PickUpLocation']
+    phone = request.form['phone']
+    DriversLicenseNumber = request.form['license']
+
+    LocationID = request.form['license']
+    PickUpLocation = request.form['pickup']
+    DropOffLocation = request.form['dropoff']
+
+    PaymentID = request.form["license"]
+    Date = request.form['date']
+    Method = request.form['method']
+
+    VehicleID = request.form['license']
+    Make = request.form['make']
+    Model = request.form['model']
+    LicensePlateNumber = request.form['license_plate']
+    Rate = request.form['rate']
+
+    ReservationID = request.form['license']
+    StartDate = request.form['start_date']
+    EndDate = request.form['end_date']
+    Cost = request.form['rate']
 
     # Insert data into RDS
     try:
         connection = get_db_connection()
 
         with connection.cursor() as cursor:
-            sql_customer = "INSERT INTO Customer (CustomerID, name, email) VALUES (%s, %s, %s)"
-            cursor.execute(sql_customer, (CustomerID, name, email))
+            sql_customer = "INSERT INTO Customer (CustomerID, name, address, email, PhoneNumber, DriversLicenseNumber) VALUES (%s, %s, %s, %s, %s, %s)"
+            cursor.execute(sql_customer, (CustomerID, name, address, email, phone, DriversLicenseNumber))
 
         with connection.cursor() as cursor:
-            sql_loc = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
-            cursor.execute(sql_loc, (PickUpLocation))
+            sql_loc = "INSERT INTO Location (LocationID, PickUpLocation, DropOffLocation) VALUES (%s, %s)"
+            cursor.execute(sql_loc, (LocationID, PickUpLocation, DropOffLocation))
+
+        with connection.cursor() as cursor:
+            sql_pay = "INSERT INTO Payment (PaymentID, Date, Method) VALUES (%s, %s, %s)"
+            cursor.execute(sql_pay, (PaymentID, Date, Method))
+
+        with connection.cursor() as cursor:
+            sql_vehicle = "INSERT INTO Vehicle (VehicleID, Make, Model, LicensePlateNumber, Rate) VALUES (%s, %s, %s, %s, %s)"
+            cursor.execute(sql_vehicle, (VehicleID, Make, Model, LicensePlateNumber, Rate))
+
+        with connection.cursor() as cursor:
+            sql_reservation = "INSERT INTO Reservation (ReservationID, StartDate, EndDate, Cost) VALUES (%s, %s, %s, %s)"
+            cursor.execute(sql_reservation, (ReservationID, StartDate, EndDate, Cost))
+
 
         connection.commit()
         connection.close()
         return "Reservation submitted successfully!"
     except Exception as e:
         return f"An error occurred: {str(e)}"
+
+
+
+
+
 
 @app.route('/bugatti/')
 def new_page2():
