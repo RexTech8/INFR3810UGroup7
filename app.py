@@ -134,5 +134,5 @@ def newpage6():
     return render_template('results.html')
 
 @app.route('/results2/')
-def newpage7()):
+def newpage7():
     return render_template('results2.html')
