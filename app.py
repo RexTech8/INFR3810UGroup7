@@ -130,6 +130,6 @@ def newpage5():
     return render_template('form.html')
 
 @app.route('/results/')
-def newpage5():
+def newpage6():
     return render_template('results.html')
 
