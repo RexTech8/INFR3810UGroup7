@@ -12,20 +12,23 @@
     <table>
         <thead>
             <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Email</th>
-                <th>Phone Number</th>
-                <!-- Add more table headers as needed -->
+                <th>ReservationID</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+                <th>Cost</th>
+                <th>Make</th>
+                <th>Model</th>
             </tr>
         </thead>
         <tbody>
             {% for row in results %}
             <tr>
-                <td>{{ row['Name'] }}</td>
-                <td>{{ row['Address'] }}</td>
-                <td>{{ row['Email'] }}</td>
-                <td>{{ row['PhoneNumber'] }}</td>
+                <td>{{ row['ReservationID'] }}</td>
+                <td>{{ row['StartDate'] }}</td>
+                <td>{{ row['EndDate'] }}</td>
+                <td>{{ row['Cost'] }}</td>
+                <td>{{ row['Make'] }}</td>
+                <td>{{ row['Model'] }}</td>
                 <!-- Render additional columns as needed -->
             </tr>
             {% endfor %}
