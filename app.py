@@ -183,10 +183,10 @@ def new_page4():
 def newpage5():
     return render_template('form.html')
 
-@app.route('/results/')
+@app.route('/reservations/')
 def newpage6():
-    return render_template('results.html')
+    return render_template('reservations.html')
 
-@app.route('/results2/')
+@app.route('/results/')
 def newpage7():
-    return render_template('results2.html')
+    return render_template('results.html')
