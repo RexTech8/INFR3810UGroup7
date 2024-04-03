@@ -14,37 +14,13 @@ class Database:
         pwd = "GHpT>O0jemlG3i*[>9by*|E?KiEK"
         db = "group7database"
 
-        self.con = pymysql.connect(host=host, user=user, password = pwd, db=db, cursorclass=pymysql.cursors.DictCursor)
+        self.con = pymysql.connect(host=host, user=user, password=pwd, db=db, cursorclass=pymysql.cursors.DictCursor)
         self.cur = self.con.cursor()
 
-    #SQL
-    def select(self):
-        self.cur.execute("SELECT * FROM Customer")
-        result = self.cur.fetchall()
-        self.con.close()
-        return result
-
-    def insert(self, id, name, grade):
-        self.cur.execute("INSERT INTO Customer ((CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber) VALUES(%s, %s, %s, %s, %s, $s)"), (id, name, grade, address, email, phonenumber, driverslicensenumber)
+    def insert_booking(self, pickup, return_date, name, address, email, phone, license):
+        sql = "INSERT INTO Booking (PickUpDate, ReturnDate, FullName, Address, Email, Phone, DriversLicense) VALUES (%s, %s, %s, %s, %s, %s, %s)"
+        self.cur.execute(sql, (pickup, return_date, name, address, email, phone, license))
         self.con.commit()
-        self.con.close()
-
-        return "OK"
-
-    def update(self, Name, Address, Email, PhoneNumber, DriversLicenseNumber):
-        self.cur.execute ("UPDATE Customer SET Name=%s, Address=%s, Email=%s, PhoneNumber=%s, DriversLicenseNumber=%s")
-        self.con.commit()
-        self.con.close()
-
-        return "Updated"
-
-    def delete_entity(self, id):
-        self.cur.execute("DELETE FROM Customer WHERE CusotmerID=?, Name=?, Address=?, Email=?, PhoneNumber=?, DriversLicenseNumber=?"), (CusotmerID, Name, Address, Email, PhoneNumber, DriversLicenseNumber)
-        self.con.commit()
-        self.con.close()
-        
-        return "Deleted"
-
 
 @app.route('/')
 def hello_world():
@@ -53,7 +29,16 @@ def hello_world():
 
 @app.route('/rollsroyce/')
 def new_page1():
-    return render_template('rollsroyce.html')
+    pickup = request.form['PickUp']
+    return_date = request.form['Return']
+    name = request.form['Name']
+    address = request.form['Address']
+    email = request.form['Email']
+    phone = request.form['Phone']
+    license = request.form['Licence']
+    db = Database()
+    db.insert_booking(pickup, return_date, name, address, email, phone, license)
+    return "Booking Successful!"
 
 @app.route('/bugatti/')
 def new_page2():
