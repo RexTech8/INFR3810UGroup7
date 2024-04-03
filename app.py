@@ -11,7 +11,7 @@ def get_db_connection():
     host = "group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com"
     user = "admin"
     password = "GHpT>O0jemlG3i*[>9by*|E?KiEK"
-    database = "group7database"
+    database = "CarRentalService"
     return pymysql.connect(host=host, user=user, password=password, database=database, cursorclass=pymysql.cursors.DictCursor)
 
 @app.route('/')
