@@ -124,14 +124,37 @@ def delete():
         with connection.cursor() as cursor:
             # Retrieve the ReservationID to be deleted from the form
             ReservationID = request.form['reservation_id']
-            LocationID = request.form['reservation_id']
-            PaymentID = request.form['reservation_id']
-            VehicleID = request.form['reservation_id']
-            CustomerID = request.form['reservation_id']
-
             # Execute the SQL query to delete data based on ReservationID
             sql = "DELETE FROM Reservation WHERE ReservationID = %s;"
             cursor.execute(sql, (ReservationID))
+
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID to be deleted from the form
+            CustomerID = request.form['reservation_id']
+            # Execute the SQL query to delete data based on ReservationID
+            sql = "DELETE FROM Customer WHERE CustomerID = %s;"
+            cursor.execute(sql, (CustomerID))
+
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID to be deleted from the form
+            LocationID = request.form['reservation_id']
+            # Execute the SQL query to delete data based on ReservationID
+            sql = "DELETE FROM Location WHERE LocationID = %s;"
+            cursor.execute(sql, (LocationID))
+
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID to be deleted from the form
+            PaymentID = request.form['reservation_id']
+            # Execute the SQL query to delete data based on ReservationID
+            sql = "DELETE FROM Payment WHERE PaymentID = %s;"
+            cursor.execute(sql, (PaymentID))
+
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID to be deleted from the form
+            VehicleID = request.form['reservation_id']
+            # Execute the SQL query to delete data based on ReservationID
+            sql = "DELETE FROM Vehicle WHERE VehicleID = %s;"
+            cursor.execute(sql, (VehicleID))
             
             # Commit the transaction
             connection.commit()
