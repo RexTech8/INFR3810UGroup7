@@ -127,13 +127,13 @@ def delete():
 
             # Execute the SQL query to delete data based on ReservationID
             sql = """
-                DELETE FROM Reservation WHERE ReservationID = '1234';
-                DELETE FROM Location WHERE LocationID = '1234';
-                DELETE FROM Payment WHERE PaymentID = '1234';
-                DELETE FROM Vehicle WHERE VehicleID = '1234';
-                DELETE FROM Customer WHERE CustomerID = '1234';
+                DELETE FROM Reservation WHERE ReservationID = %s;
+                DELETE FROM Location WHERE LocationID = %s;
+                DELETE FROM Payment WHERE PaymentID = %s;
+                DELETE FROM Vehicle WHERE VehicleID = %s';
+                DELETE FROM Customer WHERE CustomerID = %s;
                 """
-            cursor.execute(sql, (reservation_id,))
+            cursor.execute(sql, (reservation_id))
             
             # Commit the transaction
             connection.commit()
