@@ -128,3 +128,8 @@ def new_page4():
 @app.route('/form/')
 def newpage5():
     return render_template('form.html')
+
+@app.route('/result/')
+def newpage5():
+    return render_template('results.html')
+
