@@ -34,10 +34,15 @@ def submit_form():
     # Insert data into RDS
     try:
         connection = get_db_connection()
+
         with connection.cursor() as cursor:
-            sql = "INSERT INTO Customer (name, email) VALUES (%s, %s)"
-            sql = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
-            cursor.execute(sql, (name, email, PickUpLocation))
+            sql_customer = "INSERT INTO Customer (name, email) VALUES (%s, %s) && INSERT INTO Location (PickUpLocation) VALUES (%s)"
+            cursor.execute(sql_customer, (name, email))
+
+        with connection.cursor() as cursor:
+            sql_loc = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
+            cursor.execute(sql_loc, (PickUpLocation))
+
         connection.commit()
         connection.close()
         return "Reservation submitted successfully!"
