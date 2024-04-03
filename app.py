@@ -124,6 +124,10 @@ def delete():
         with connection.cursor() as cursor:
             # Retrieve the ReservationID to be deleted from the form
             ReservationID = request.form['reservation_id']
+            LocationID = request.form['reservation_id']
+            PaymentID = request.form['reservation_id']
+            VehicleID = request.form['reservation_id']
+            CustomerID = request.form['reservation_id']
 
             # Execute the SQL query to delete data based on ReservationID
             sql = """
@@ -133,7 +137,7 @@ def delete():
                 DELETE FROM Vehicle WHERE VehicleID = %s;
                 DELETE FROM Customer WHERE CustomerID = %s;
                 """
-            cursor.execute(sql, (ReservationID, ReservationID, ReservationID, ReservationID))
+            cursor.execute(sql, (ReservationID, LocationID, PaymentID, VehicleID, CustomerID))
             
             # Commit the transaction
             connection.commit()
