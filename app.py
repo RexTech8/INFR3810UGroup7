@@ -34,7 +34,7 @@ def submit_form():
     try:
         connection = get_db_connection()
         with connection.cursor() as cursor:
-            sql = "INSERT INTO messages (name, email, message) VALUES (%s, %s)"
+            sql = "INSERT INTO messages (name, email) VALUES (%s, %s)"
             cursor.execute(sql, (name, email))
         connection.commit()
         connection.close()
