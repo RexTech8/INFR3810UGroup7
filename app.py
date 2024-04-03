@@ -166,6 +166,35 @@ def delete():
     # Redirect back to the index page or any other page
     return "Reservation deleted successfully!"
 
+def modify():
+    # Connect to the database
+        connection = pymysql.connect(host="group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com",
+                                 user="admin",
+                                 password="GHpT>O0jemlG3i*[>9by*|E?KiEK",
+                                 database="CarRentalService",
+                                 cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID from the form
+            ReservationID = request.form['reservation_id']
+            # Execute the SQL query to fetch data based on the ReservationID
+            sql = "SELECT * FROM Reservation WHERE ReservationID = %s;"
+            cursor.execute(sql, (ReservationID,))
+            reservation_data = cursor.fetchone()
+
+            # If the reservation is found, render the modification form
+            if reservation_data:
+                return render_template('modify.html', reservation=reservation_data)
+            else:
+                return "Reservation not found."
+
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
+
+    finally:
+        # Close the database connection
+        connection.close()
 
 @app.route('/bugatti/')
 def new_page2():
