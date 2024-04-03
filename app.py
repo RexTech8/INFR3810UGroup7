@@ -109,7 +109,7 @@ def search():
         connection.close()
 
     # Render the template with the search results
-    return render_template('results2.html', results=results)
+    return render_template('results.html', results=results)
 
 @app.route('/delete', methods=['POST'])
 def delete():
