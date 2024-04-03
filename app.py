@@ -62,7 +62,7 @@ def submit_form():
             cursor.execute(sql_customer, (CustomerID, name, address, email, phone, DriversLicenseNumber))
 
         with connection.cursor() as cursor:
-            sql_loc = "INSERT INTO Location (LocationID, PickUpLocation, DropOffLocation) VALUES (%s, %s)"
+            sql_loc = "INSERT INTO Location (LocationID, PickUpLocation, DropOffLocation) VALUES (%s, %s, %s)"
             cursor.execute(sql_loc, (LocationID, PickUpLocation, DropOffLocation))
 
         with connection.cursor() as cursor:
