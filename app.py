@@ -35,10 +35,11 @@ def submit_form():
         connection = get_db_connection()
         with connection.cursor() as cursor:
             sql = "INSERT INTO Customer (name, email) VALUES (%s, %s)"
+            sql = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
             cursor.execute(sql, (name, email))
         connection.commit()
         connection.close()
-        return "Form submitted successfully!"
+        return "Reservation submitted successfully!"
     except Exception as e:
         return f"An error occurred: {str(e)}"
 
