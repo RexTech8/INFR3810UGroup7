@@ -7,20 +7,12 @@ app = Flask(__name__)
 
 ##### DATABASE #####
 
-class Database:
-    def __init__(self):
-        host = "group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com"
-        user = "admin"
-        pwd = "GHpT>O0jemlG3i*[>9by*|E?KiEK"
-        db = "group7database"
-
-        self.con = pymysql.connect(host=host, user=user, password=pwd, db=db, cursorclass=pymysql.cursors.DictCursor)
-        self.cur = self.con.cursor()
-
-    def insert_booking(self, pickup, return_date, name, address, email, phone, license):
-        sql = "INSERT INTO Booking (PickUpDate, ReturnDate, FullName, Address, Email, Phone, DriversLicense) VALUES (%s, %s, %s, %s, %s, %s, %s)"
-        self.cur.execute(sql, (pickup, return_date, name, address, email, phone, license))
-        self.con.commit()
+def get_db_connection():
+    host = "group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com"
+    user = "admin"
+    password = "GHpT>O0jemlG3i*[>9by*|E?KiEK"
+    database = "group7database"
+    return pymysql.connect(host=host, user=user, password=password, database=database, cursorclass=pymysql.cursors.DictCursor)
 
 @app.route('/')
 def hello_world():
@@ -29,16 +21,27 @@ def hello_world():
 
 @app.route('/rollsroyce/')
 def new_page1():
-    pickup = request.form['PickUp']
-    return_date = request.form['Return']
-    name = request.form['Name']
-    address = request.form['Address']
-    email = request.form['Email']
-    phone = request.form['Phone']
-    license = request.form['Licence']
-    db = Database()
-    db.insert_booking(pickup, return_date, name, address, email, phone, license)
-    return ('rollsroyce.html')
+    return render_template('rollsroyce.html')
+
+# Route to handle form submission
+@app.route('/submit_form', methods=['POST'])
+def submit_form():
+    # Get form data
+    name = request.form['name']
+    email = request.form['email']
+    message = request.form['message']
+
+    # Insert data into RDS
+    try:
+        connection = get_db_connection()
+        with connection.cursor() as cursor:
+            sql = "INSERT INTO messages (name, email, message) VALUES (%s, %s, %s)"
+            cursor.execute(sql, (name, email, message))
+        connection.commit()
+        connection.close()
+        return "Form submitted successfully!"
+    except Exception as e:
+        return f"An error occurred: {str(e)}"
 
 @app.route('/bugatti/')
 def new_page2():
