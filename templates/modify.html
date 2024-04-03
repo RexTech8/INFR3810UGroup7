@@ -1,0 +1,24 @@
+<!-- modify.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modify Reservation</title>
+</head>
+<body>
+    <h1>Modify Reservation</h1>
+    <form action="/modify-reservation" method="POST">
+        <label for="reservation_id">Reservation ID:</label>
+        <input type="text" id="reservation_id" name="reservation_id" required><br>
+        <label for="start_date">New Start Date:</label>
+        <input type="text" id="start_date" name="start_date" required><br>
+        <label for="end_date">New End Date:</label>
+        <input type="text" id="end_date" name="end_date" required><br>
+        <label for="cost">New Cost:</label>
+        <input type="text" id="cost" name="cost" required><br>
+        <button type="submit">Modify Reservation</button>
+    </form>
+</body>
+</html>

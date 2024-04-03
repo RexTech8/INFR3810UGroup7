@@ -166,35 +166,44 @@ def delete():
     # Redirect back to the index page or any other page
     return "Reservation deleted successfully!"
 
-def modify():
-    # Connect to the database
-        connection = pymysql.connect(host="group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com",
+
+
+# Route to handle form submission and modify reservation
+@app.route('/modify', methods=['POST'])
+
+    
+def modify_reservation():
+    connection = pymysql.connect(host="group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com",
                                  user="admin",
                                  password="GHpT>O0jemlG3i*[>9by*|E?KiEK",
                                  database="CarRentalService",
                                  cursorclass=pymysql.cursors.DictCursor)
+    # Retrieve form data
+    reservation_id = request.form['reservation_id']
+    new_start_date = request.form['start_date']
+    new_end_date = request.form['end_date']
+    new_cost = request.form['cost']
 
     try:
         with connection.cursor() as cursor:
-            # Retrieve the ReservationID from the form
-            ReservationID = request.form['reservation_id']
-            # Execute the SQL query to fetch data based on the ReservationID
-            sql = "SELECT * FROM Reservation WHERE ReservationID = %s;"
-            cursor.execute(sql, (ReservationID,))
-            reservation_data = cursor.fetchone()
+            # Execute SQL query to update reservation
+            sql = "UPDATE Reservation SET StartDate = %s, EndDate = %s, Cost = %s WHERE ReservationID = %s"
+            cursor.execute(sql, (new_start_date, new_end_date, new_cost, reservation_id))
+        
+        # Commit the transaction
+        connection.commit()
 
-            # If the reservation is found, render the modification form
-            if reservation_data:
-                return render_template('modify.html', reservation=reservation_data)
-            else:
-                return "Reservation not found."
+        # Redirect to a success page or render a success message
+        return "Reservation modified successfully!"
 
     except Exception as e:
+        # Handle any exceptions
         return f"An error occurred: {str(e)}"
 
     finally:
         # Close the database connection
         connection.close()
+
 
 @app.route('/bugatti/')
 def new_page2():
@@ -219,3 +228,7 @@ def newpage6():
 @app.route('/results/')
 def newpage7():
     return render_template('results.html')
+
+@app.route('/modify/')
+def newpage8():
+    return render_template('modify.html')
