@@ -101,8 +101,6 @@ def new_page3():
 def new_page4():
     return render_template('lexus.html')
 
-@app.route('/list')
-def list():
-    db = Database()
-    result = db.select()
-    return render_template('results.html', result=result)
+@app.route('/form/')
+def newpage5():
+    return render_template('form.html')
