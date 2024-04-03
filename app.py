@@ -38,7 +38,7 @@ def new_page1():
     license = request.form['Licence']
     db = Database()
     db.insert_booking(pickup, return_date, name, address, email, phone, license)
-    return "Booking Successful!"
+    return ('rollsroyce.html')
 
 @app.route('/bugatti/')
 def new_page2():
