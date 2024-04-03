@@ -36,7 +36,7 @@ def submit_form():
         connection = get_db_connection()
 
         with connection.cursor() as cursor:
-            sql_customer = "INSERT INTO Customer (name, email) VALUES (%s, %s) && INSERT INTO Location (PickUpLocation) VALUES (%s)"
+            sql_customer = "INSERT INTO Customer (name, email) VALUES (%s, %s)"
             cursor.execute(sql_customer, (name, email))
 
         with connection.cursor() as cursor:
