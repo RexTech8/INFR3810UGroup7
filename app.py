@@ -100,7 +100,7 @@ def search():
             ReservationID = request.form['license_number']
 
             # Execute the SQL query to fetch data based on the Driver's License Number
-            sql = "SELECT * FROM Reservation WHERE DriversLicenseNumber = %s"
+            sql = "SELECT * FROM Reservation WHERE ReservationID = %s"
             cursor.execute(sql, (ReservationID))
             results = cursor.fetchall()
 
