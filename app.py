@@ -111,6 +111,39 @@ def search():
     # Render the template with the search results
     return render_template('results2.html', results=results)
 
+@app.route('/delete', methods=['POST'])
+def delete():
+    # Connect to the database
+    connection = pymysql.connect(host="group7database.cb8giewg8z2a.us-east-1.rds.amazonaws.com",
+                                 user="admin",
+                                 password="GHpT>O0jemlG3i*[>9by*|E?KiEK",
+                                 database="CarRentalService",
+                                 cursorclass=pymysql.cursors.DictCursor)
+
+    try:
+        with connection.cursor() as cursor:
+            # Retrieve the ReservationID to be deleted from the form
+            reservation_id = request.form['reservation_id']
+
+            # Execute the SQL query to delete data based on ReservationID
+            sql = """
+                DELETE FROM Reservation WHERE ReservationID = '1234';
+                DELETE FROM Location WHERE LocationID = '1234';
+                DELETE FROM Payment WHERE PaymentID = '1234';
+                DELETE FROM Vehicle WHERE VehicleID = '1234';
+                DELETE FROM Customer WHERE CustomerID = '1234';
+                """
+            cursor.execute(sql, (reservation_id,))
+            
+            # Commit the transaction
+            connection.commit()
+
+    finally:
+        # Close the database connection
+        connection.close()
+
+    # Redirect back to the index page or any other page
+    return "Reservation deleted successfully!"
 
 
 @app.route('/bugatti/')
