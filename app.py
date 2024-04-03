@@ -29,6 +29,7 @@ def submit_form():
     # Get form data
     name = request.form['name']
     email = request.form['email']
+    PickUpLocation = request.form['PickUpLocation']
 
     # Insert data into RDS
     try:
@@ -36,7 +37,7 @@ def submit_form():
         with connection.cursor() as cursor:
             sql = "INSERT INTO Customer (name, email) VALUES (%s, %s)"
             sql = "INSERT INTO Location (PickUpLocation) VALUES (%s)"
-            cursor.execute(sql, (name, email))
+            cursor.execute(sql, (name, email, PickUpLocation))
         connection.commit()
         connection.close()
         return "Reservation submitted successfully!"
