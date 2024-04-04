@@ -1,1 +1,0 @@
-SELECT * FROM Vehicle v JOIN Reservation r ON v.VehicleID = r.VehicleID
